@@ -1,0 +1,877 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/b.png">
+  <link rel="icon" type="image/png" href="/img/avatar.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="ddy">
+  <meta name="keywords" content="icpc 辩论">
+  <title>2018沈阳网络赛c题（莫比乌斯函数+容斥） - mainland</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>mainland</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/images/acmhalf.jpeg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-06-12 12:55" pubdate>
+      2020年6月12日 下午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">2018沈阳网络赛c题（莫比乌斯函数+容斥）</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <p>2018年沈阳网络赛c Convex Hull。<br>虽然顶了一个计算几何的名字，实际上是一个数学题。<br>涉及到了莫比乌斯函数和容斥的知识，以及一些<del>奇技淫巧</del>调试技巧。<br><a id="more"></a> </p>
+<h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>这里大家可以直接查看计蒜客上的题目 <del>放链接！</del> <a href="https://nanti.jisuanke.com/t/A1991" target="_blank" rel="noopener">2018沈阳网络赛c题 Convex Hull</a><sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="2018沈阳网络赛c题 Convex Hull 
+">[1]</span></a></sup></p>
+<p>温馨提示：查看计蒜客的题目需要登录账号哦 ：）</p>
+<p>我们首先定义函数 $gay(i)$: </p>
+<script type="math/tex; mode=display">
+gay(i) =
+\begin{cases}
+0,  & \text{ if $i=k*x*x,x\gt1,k\ge1$}     \\
+i*i, & \text{else }          \\
+\end{cases}</script><p>然后我们的任务是计算：</p>
+<script type="math/tex; mode=display">
+\begin{equation}\begin{split}
+\sum_{num=1} ^{n}(\sum _{i=1} ^{num} gay(i)) \mod\ p 
+\end{split}\end{equation}</script><p>多组输入，数据组数不超过100组。</p>
+<p>每组输入有两个整数 $n$ 和 $p$  , 数据范围 为 $1\le n \le 10^{10}，1\le p\le 10^{11}$。</p>
+<h5 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h5><div class="hljs"><pre><code class="hljs c++"><span class="hljs-number">1</span> <span class="hljs-number">10</span>
+<span class="hljs-number">8</span> <span class="hljs-number">19230817</span></code></pre></div>
+<h5 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h5><div class="hljs"><pre><code class="hljs c++"><span class="hljs-number">1</span>
+<span class="hljs-number">396</span></code></pre></div>
+<h2 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h2><p>首先分析$gay(i)$函数，可以发现当i中含有平方因子时 ,$gay(i)=0$ ,我们这时就应该想到<code>莫比乌斯函数</code>了，可以利用莫比乌斯函数对$gay(i)$ 函数进行一个等价表示：</p>
+<script type="math/tex; mode=display">gay(i)=\mu^{2}(i)*i^{2}</script><p>作为一个不是 特别懂莫比乌斯函数的人，当然要多查阅一些相关资料啦。</p>
+<p>这里提供一些我参考的莫比乌斯函数的基础资料和扩展资料。</p>
+<p><a href="https://wenku.baidu.com/view/542961fdba0d4a7302763ad5.html" target="_blank" rel="noopener">贾志鹏 线性筛法与积性函数</a><sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="贾志鹏 线性筛法与积性函数
+">[2]</span></a></sup></p>
+<p><a href="https://blog.csdn.net/skywalkert/article/details/50500009" target="_blank" rel="noopener">浅谈一类积性函数的前缀和</a> <sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="浅谈一类积性函数的前缀和 
+">[3]</span></a></sup></p>
+<p><del>事实上我也只是看了皮毛，数学功底要加强啊 !</del></p>
+<p>对于题目的思路主要参考了qkoqhh的博客<a href="https://blog.csdn.net/qkoqhh/article/details/82532516" target="_blank" rel="noopener">2018沈阳网络赛C(莫比乌斯函数+容斥)</a><sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="2018沈阳网络赛C(莫比乌斯函数+容斥)
+">[4]</span></a></sup>，我的这篇博文进行了更加详细的分析。</p>
+<h3 id="公式推导"><a href="#公式推导" class="headerlink" title="公式推导"></a>公式推导</h3><p>回到我们需要求的公式，现在我们要开始<strong>推公式</strong>啦！</p>
+<p><strong>提前注明：之后的公式为了方便，统一省略了<script type="math/tex">\mod p</script> 。</strong></p>
+<script type="math/tex; mode=display">
+\begin{align}
+&\sum_{num=1} ^{n}\sum _{i=1} ^{num} gay(i) \\
+=& \sum _{num=1} ^{n} {\sum _{i=1} ^{num}}\mu^{2}(i)*i^{2}  \\
+=& \sum _{i=1} ^{n} {\mu^2(i)*(n-i+1)}  \\
+=& (n+1)\sum_{i=1}^{n}{\mu^2(i)*i^2}-\sum_{i=1}^{n}{\mu^2(i)*i^3}  \\
+\tag1\end{align}</script><p>第二行到第三行的转化可以有两种方法理解，第一种就是非常直观的<strong>列举前几项</strong>感受一下具体$ \mu^2(i)$ 会被计算几次。第二种是利用<strong>二重积分交换积分限</strong>的思路来理解，事实上，第一种方法更加的直观。<br>之后我们要集中处理 $ \sum_{i=1}^{n} \mu^2(i)*i^2 $，这里使用到了容斥的思想，我会对这一部分进详细的分析。</p>
+<p>首先我们来思考一道更加简单的题目bzoj2440，这个题目需要解决的一个子问题是，给定区间$[1,n]$求出这个区间中不含有平方因子的数的个数。本质上是要求解$\sum_{i=1}^{n}\mu^2(i)$。</p>
+<p>事实上这个公式可以利用容斥原来的思想 推导出更加方便运算的形式：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+
+\sum_{i=1}^{n}\mu^2(i)=\sum_{i=1}^{\sqrt{n}}\mu(i) \lfloor \frac{n}{i^2} \rfloor \tag2
+
+\end{align}</script><p>大家可以跟着我一起来思考，对于公式左边的$i$，只有当$i$不含有平方因子时，$\mu(i)$不等于$0$，对于最后的结果才有贡献。</p>
+<p>第二步就是要利用容斥来计算出答案，对于一个平方因子$i^2$，$[1,n]$中含有该平方因子的数的个数是$\lfloor\frac{n}{i^2}\rfloor $，</p>
+<p>设最后的答案为$ans$，$ans=n-含有2^2因子的个数-含有3^2因子的个数+含有2^2*3^2因子的个数…$，容斥的系数刚好就是$\mu(i)$。</p>
+<p>我们可以通过分析前几项的方式来感受一下：</p>
+<p>当$i=1$时，$\lfloor\frac{n}{1^2}\rfloor $代表这个区间所有数的数量，这一项的系数为1；</p>
+<p>当$i=2$时，含有平方因子$2^2$的数的数量是$\lfloor\frac{n}{2^2}\rfloor$，我们需要减去这个数，这一项的系数为-1；</p>
+<p>当$i=3$时，含有平方因子$3^2$的数的数量是$\lfloor\frac{n}{3^2}\rfloor$，我们需要减去这个数，这一项的系数为-1；</p>
+<p>当$i=4$时，含有平方因子$4^2$的数的数量是$\lfloor\frac{n}{4^2}\rfloor$，因为在$i=2$时我们已经处理了含有平方因子$4^2$的数，所以这一项的系数是0。</p>
+<p>当$i=5$时，含有平方因子$5^2$的数的数量是$\lfloor\frac{n}{5^2}\rfloor$，我们需要加上这个数，这一项的系数为1；</p>
+<p>当$i=6$时，含有平方因子$6^2$的数的数量是$\lfloor\frac{n}{6^2}\rfloor$，在$i=2$和$i=3$时，含有平方因子$6^2$的数被减了两次，所以我们需要加上这个数，这一项的系数为1；</p>
+<p>当$i=7$时，含有平方因子$7^2$的数的数量是$\lfloor\frac{n}{7^2}\rfloor$，我们需要加上这个数，这一项的系数为1；</p>
+<p>当$i=8$时，含有平方因子$8^2$的数的数量是$\lfloor\frac{n}{7^2}\rfloor$，在$i=2$时，含有平方因子$8^2$的数已经被处理过了，所以这一项的系数为0；</p>
+<p>……</p>
+<p>通过前几项的分析，相信大家对于容斥以及枚举平方因子时系数的选择的过程一定有了一个直观的理解。</p>
+<p>我们可以利用同样的思路去求解<script type="math/tex">\sum_{i=1}^{n}\mu^2(i)*i^2\</script>和<script type="math/tex">\ \sum_{i=1}^{n}\mu^2(i)*i^3\</script>:</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\sum_{i=1}^{n}\mu^2(i)*i^2=\sum_{i=1}^{\sqrt{n}}\mu(i) \sum_{k=1}^{\lfloor \frac{n}{i^2}  \rfloor}(ki^2)^2\tag3\\
+\sum_{i=1}^{n}\mu^2(i)*i^3=\sum_{i=1}^{\sqrt{n}}\mu(i) \sum_{k=1}^{\lfloor \frac{n}{i^2} \rfloor}(ki^2)^3 \tag4\\
+
+\end{align}</script><p>将上述公式带入 公式$(1)$：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+&(n+1)\sum_{i=1}^{n}{\mu^2(i)*i^2}-\sum_{i=1}^{n}{\mu^2(i)*i^3}\\
+=&(n+1)\sum_{i=1}^{\sqrt{n}}\mu^2(i)*\sum_{k=1}^{\lfloor \frac{n}{i^2}\rfloor}(ki)^2-
+\sum_{i=1}^{\sqrt{n}}\mu^2(i)*\sum_{k=1}^{\lfloor \frac{n}{i^2}\rfloor}(ki)^3\\
+=&(n+1)\sum_{i=1}^{\sqrt{n}}\mu(i)i^4*\sum_{k=1}^{\lfloor \frac{n}{i^2}\rfloor}k^2-
+\sum_{i=1}^{\sqrt{n}}\mu(i)i^6*\sum_{k=1}^{\lfloor \frac{n}{i^2}\rfloor}k^3\\
+
+\tag5 \end{align}</script><p>然后我们可以在$O(\sqrt{n})$的时间复杂度内，求解出最后的答案。</p>
+<p>这里利用了两个公式，分别是平方根求和公式和立方根求和公式。</p>
+<p>平方根求和公式：</p>
+<script type="math/tex; mode=display">
+1^2+2^2+3^3+...+n^2=\frac{n*(n+1)*(2*n+1)}{6} 
+\tag6</script><p>立方根求和公式：</p>
+<script type="math/tex; mode=display">
+1^3+2^3+3^3+...+n^3=(\frac{n*(n+1)}{2})^2
+\tag7</script><p>**求解时记得对$p$取模：）</p>
+<h3 id="int128的使用"><a href="#int128的使用" class="headerlink" title="int128的使用"></a>int128的使用</h3><p>运算过程种会爆long long，所以要使用int128，<a href="https://www.cnblogs.com/ECJTUACM-873284962/p/9198885.html" target="_blank" rel="noopener">int218的参考资料</a> <sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span class="hint--top hint--rounded" aria-label="int218的参考资料
+">[5]</span></a></sup></p>
+<p>下面是使用int128的模板，实际上这个题目当中int128是作为一个中间变量来使用的。</p>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+
+
+<span class="hljs-function"><span class="hljs-keyword">inline</span> __int128 <span class="hljs-title">read</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    __int128 x=<span class="hljs-number">0</span>,f=<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">char</span> ch=getchar();
+    <span class="hljs-keyword">while</span>(ch&lt;<span class="hljs-string">'0'</span>||ch&gt;<span class="hljs-string">'9'</span>)
+    &#123;
+        <span class="hljs-keyword">if</span>(ch==<span class="hljs-string">'-'</span>)
+            f=<span class="hljs-number">-1</span>;
+        ch=getchar();
+    &#125;
+    <span class="hljs-keyword">while</span>(ch&gt;=<span class="hljs-string">'0'</span>&amp;&amp;ch&lt;=<span class="hljs-string">'9'</span>)
+    &#123;
+        x=x*<span class="hljs-number">10</span>+ch-<span class="hljs-string">'0'</span>;
+        ch=getchar();
+    &#125;
+    <span class="hljs-keyword">return</span> x*f;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">write</span><span class="hljs-params">(__int128 x)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">if</span>(x&lt;<span class="hljs-number">0</span>)
+    &#123;
+        <span class="hljs-built_in">putchar</span>(<span class="hljs-string">'-'</span>);
+        x=-x;
+    &#125;
+    <span class="hljs-keyword">if</span>(x&gt;<span class="hljs-number">9</span>)
+        <span class="hljs-built_in">write</span>(x/<span class="hljs-number">10</span>);
+    <span class="hljs-built_in">putchar</span>(x%<span class="hljs-number">10</span>+<span class="hljs-string">'0'</span>);
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    __int128 a = <span class="hljs-built_in">read</span>();
+    __int128 b = <span class="hljs-built_in">read</span>();
+    <span class="hljs-built_in">write</span>(a + b);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
+<h2 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h2><h3 id="c-版本代码"><a href="#c-版本代码" class="headerlink" title="c++版本代码"></a>c++版本代码</h3><p>c++版本，这里的莫比乌斯函数的求解可以作为模板。</p>
+<p>下面是ac的代码。</p>
+<div class="hljs"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;set&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;map&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cmath&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> inc(i,a,b) for(int i=a;i&lt;=b;i++)</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> dec(i,a,b) for(int i=a;i&gt;=b;i--)</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long </span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> mst(a,b) memset(a,b,sizeof a)</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> pb push_back</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> sqr(x) ((x)*(x))</span>
+
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> maxv=<span class="hljs-number">1e5</span>+<span class="hljs-number">10</span>;
+<span class="hljs-keyword">bool</span> np[maxv];
+<span class="hljs-keyword">int</span> mu[maxv],prime[maxv],tot;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">sieve</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>&#123;
+	tot=<span class="hljs-number">0</span>;mst(mu,<span class="hljs-number">0</span>);mst(np,<span class="hljs-number">0</span>);
+	mu[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;np[<span class="hljs-number">1</span>]=<span class="hljs-literal">true</span>;
+	inc(i,<span class="hljs-number">2</span>,n)&#123;
+		<span class="hljs-keyword">if</span>(!np[i]) prime[++tot]=i,mu[i]=<span class="hljs-number">-1</span>;
+		inc(j,<span class="hljs-number">1</span>,tot)&#123;
+			<span class="hljs-keyword">if</span>(i*prime[j]&gt;n) <span class="hljs-keyword">break</span>;
+			np[i*prime[j]]=<span class="hljs-number">1</span>;
+			<span class="hljs-keyword">if</span>(i%prime[j]==<span class="hljs-number">0</span>)&#123;
+			   mu[i*prime[j]]=<span class="hljs-number">0</span>;
+			   <span class="hljs-keyword">break</span>;
+			&#125;
+			mu[i*prime[j]]=mu[i]*mu[prime[j]];
+		&#125;
+	&#125;
+&#125;
+
+__int128 ans,p,inf;
+ll n; 
+<span class="hljs-function">ll <span class="hljs-title">sum</span><span class="hljs-params">(ll n)</span></span>&#123;
+	__int128 x=n,y=n+<span class="hljs-number">1</span>,z=<span class="hljs-number">2</span>*n+<span class="hljs-number">1</span>;
+	<span class="hljs-keyword">if</span>(x%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>) x/=<span class="hljs-number">2</span>;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(y%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>) y/=<span class="hljs-number">2</span>;<span class="hljs-keyword">else</span> z/=<span class="hljs-number">2</span>;
+	<span class="hljs-keyword">if</span>(x%<span class="hljs-number">3</span>==<span class="hljs-number">0</span>) x/=<span class="hljs-number">3</span>;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(y%<span class="hljs-number">3</span>==<span class="hljs-number">0</span>) y/=<span class="hljs-number">3</span>;<span class="hljs-keyword">else</span> z/=<span class="hljs-number">3</span>;
+	<span class="hljs-keyword">return</span> (ll)(x*y%p*z%p);
+&#125;
+
+<span class="hljs-function">ll <span class="hljs-title">pre</span><span class="hljs-params">(ll n)</span></span>&#123;
+	__int128 x=n,y=n+<span class="hljs-number">1</span>;
+	<span class="hljs-keyword">if</span>(x%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>) x/=<span class="hljs-number">2</span>;<span class="hljs-keyword">else</span> y/=<span class="hljs-number">2</span>;
+	x=x*y%p;x=x*x%p;<span class="hljs-keyword">return</span> x;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;	
+
+	ll o;
+	sieve(<span class="hljs-number">100000</span>);
+	<span class="hljs-keyword">while</span>(~<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld%lld"</span>,&amp;n,&amp;o))&#123;
+		p=o;
+		ans=<span class="hljs-number">0</span>;
+		<span class="hljs-keyword">for</span>(ll i=<span class="hljs-number">1</span>;i*i&lt;=n;i++)&#123;
+			__int128 ff=<span class="hljs-number">1L</span>L*mu[i]*i*i*i%p*i%p*i%p*i%p;
+			__int128 gg=<span class="hljs-number">1L</span>L*mu[i]*i*i%p*i%p*i%p;
+			ans+=p+gg*sum(n/sqr(i))%p*(n+<span class="hljs-number">1</span>)%p-ff*pre(n/sqr(i))%p;
+			ans%=p;
+		&#125;
+		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,(ll)ans);
+	&#125;
+	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre></div>
+<h3 id="java版本代码"><a href="#java版本代码" class="headerlink" title="java版本代码"></a>java版本代码</h3><p>写完之后我还写了一个java版本的代码，因为题目没有提示java的时间限制是多少，估计出题方开的时间限制和c++版本的是一样的，写完之后提交果然T飞了（时间超限），所以写了一个生成随机数的程序，简单对拍了一下。下面的java 代码应该是没有问题的。</p>
+<p>使用java编写代码，其实就是为了使用BigInteger类（大整数类），这样可以使用无限范围大的整数。</p>
+<p>BigInteger大整数类的参考资料 <a href="https://blog.csdn.net/u010304217/article/details/37728493" target="_blank" rel="noopener">Java中的BigInteger在ACM中的应用</a><sup id="fnref:6" class="footnote-ref"><a href="#fn:6" rel="footnote"><span class="hint--top hint--rounded" aria-label="Java中的BigInteger在ACM中的应用
+">[6]</span></a></sup>。</p>
+<p>java编写程序时必须是要使用Main作为类名。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">// 1500ms 的限制下tle了</span>
+<span class="hljs-comment">// 对java这么不友好吗</span>
+<span class="hljs-comment">// 对拍了应该是对的</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-keyword">import</span> java.math.BigInteger;
+<span class="hljs-keyword">import</span> java.util.Scanner;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> maxv=(<span class="hljs-keyword">int</span>)(<span class="hljs-number">1e5</span>+<span class="hljs-number">10</span>);
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span>[] mu=<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[maxv];
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span>[] prime=<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[maxv];
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span>[] np=<span class="hljs-keyword">new</span> <span class="hljs-keyword">boolean</span>[maxv];
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> tot;
+    <span class="hljs-keyword">static</span> BigInteger ans= <span class="hljs-keyword">new</span> BigInteger(<span class="hljs-string">"0"</span>);
+    <span class="hljs-keyword">static</span> BigInteger p = <span class="hljs-keyword">new</span> BigInteger(<span class="hljs-string">"0"</span>);
+    <span class="hljs-keyword">static</span> BigInteger n = <span class="hljs-keyword">new</span> BigInteger(<span class="hljs-string">"0"</span>);
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sieve</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>&#123;
+        tot=<span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;maxv;i++) &#123;
+            mu[i] = <span class="hljs-number">0</span>;
+            np[i] = <span class="hljs-keyword">false</span>;
+        &#125;
+        mu[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;
+        np[<span class="hljs-number">1</span>]=<span class="hljs-keyword">true</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i&lt;=n;i++)&#123;
+            <span class="hljs-keyword">if</span>(!np[i])&#123;
+                prime[++tot]=i;
+                mu[i]=-<span class="hljs-number">1</span>;
+            &#125;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;=tot;j++)&#123;
+                <span class="hljs-keyword">if</span>(i*prime[j]&gt;n) <span class="hljs-keyword">break</span>;
+                np[i*prime[j]]=<span class="hljs-keyword">true</span>;
+                <span class="hljs-keyword">if</span>(i%prime[j]==<span class="hljs-number">0</span>)&#123;
+                    mu[i*prime[j]]=<span class="hljs-number">0</span>;
+                    <span class="hljs-keyword">break</span>;
+                &#125;
+                mu[i*prime[j]]=mu[i]*mu[prime[j]];
+            &#125;
+        &#125;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> BigInteger <span class="hljs-title">sum</span><span class="hljs-params">(BigInteger n)</span></span>&#123;
+        BigInteger x=n;
+        BigInteger y=n.add(BigInteger.ONE);
+        BigInteger z=n.multiply(BigInteger.valueOf(<span class="hljs-number">2</span>)).add(BigInteger.valueOf(<span class="hljs-number">1</span>));
+        <span class="hljs-keyword">if</span>(x.mod(BigInteger.valueOf(<span class="hljs-number">2</span>)).equals(BigInteger.ZERO)) x=x.divide(BigInteger.valueOf(<span class="hljs-number">2</span>));
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(y.mod(BigInteger.valueOf(<span class="hljs-number">2</span>)).equals(BigInteger.ZERO)) y=y.divide(BigInteger.valueOf(<span class="hljs-number">2</span>));
+        <span class="hljs-keyword">else</span> z=z.divide(BigInteger.valueOf(<span class="hljs-number">2</span>));
+        <span class="hljs-keyword">if</span>(x.mod(BigInteger.valueOf(<span class="hljs-number">3</span>)).equals(BigInteger.ZERO)) x=x.divide(BigInteger.valueOf(<span class="hljs-number">3</span>));
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(y.mod(BigInteger.valueOf(<span class="hljs-number">3</span>)).equals(BigInteger.ZERO)) y=y.divide(BigInteger.valueOf(<span class="hljs-number">3</span>));
+        <span class="hljs-keyword">else</span> z=z.divide(BigInteger.valueOf(<span class="hljs-number">3</span>));
+        <span class="hljs-keyword">return</span> x.multiply(y).mod(p).multiply(z).mod(p);
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> BigInteger <span class="hljs-title">pre</span><span class="hljs-params">(BigInteger n)</span></span>&#123;
+        BigInteger x=n;
+        BigInteger y=n.add(BigInteger.ONE);
+        <span class="hljs-keyword">if</span>(x.mod(BigInteger.valueOf(<span class="hljs-number">2</span>)).equals(BigInteger.ZERO)) x=x.divide(BigInteger.valueOf(<span class="hljs-number">2</span>));
+        <span class="hljs-keyword">else</span> y=y.divide(BigInteger.valueOf(<span class="hljs-number">2</span>));
+        x=x.multiply(y).mod(p);
+        x=x.multiply(x).mod(p);
+        <span class="hljs-keyword">return</span> x;
+    &#125;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span>&#123;
+        sieve(<span class="hljs-number">100000</span>);
+        Scanner in = <span class="hljs-keyword">new</span> Scanner(System.in);
+        <span class="hljs-keyword">while</span>(in.hasNext())&#123;
+            n=in.nextBigInteger();
+            p=in.nextBigInteger();
+            ans=BigInteger.ZERO;
+            BigInteger i=BigInteger.valueOf(<span class="hljs-number">1</span>);
+            <span class="hljs-keyword">for</span>(;i.multiply(i).compareTo(n)&lt;=<span class="hljs-number">0</span>;i=i.add(BigInteger.ONE))&#123;
+                <span class="hljs-keyword">int</span> ip=i.intValue();
+                BigInteger ff=BigInteger.valueOf(mu[ip]);
+                ff=ff.multiply(i).multiply(i).multiply(i).mod(p).multiply(i).mod(p).multiply(i).mod(p).multiply(i).mod(p);
+                BigInteger gg=BigInteger.valueOf(mu[ip]);
+                gg=gg.multiply(i).multiply(i).mod(p).multiply(i).mod(p).multiply(i).mod(p);
+                ans=ans.add(p);
+                BigInteger fi=sum(n.divide(i.multiply(i)));
+                fi=fi.multiply(gg).mod(p).multiply(n.add(BigInteger.ONE)).mod(p);
+                BigInteger se=pre(n.divide(i.multiply(i))).multiply(ff).mod(p);
+				ans=ans.add(fi).subtract(se).mod(p);
+            &#125;
+            System.out.println(ans);
+        &#125;
+    &#125;
+&#125;</code></pre></div>
+<h3 id="对拍代码"><a href="#对拍代码" class="headerlink" title="对拍代码"></a>对拍代码</h3><p>命令为run.sh文件，在命令行中输入<code>run.sh</code> 即可。</p>
+<div class="hljs"><pre><code class="hljs shell">cnt=0 
+while true; do
+	./c &gt; data.in                   # c是生成输入样例的程序的二进制文件
+	./a&lt;data.in&gt; a.out              # a是正确程序的二进制文件
+	java Main&lt;data.in&gt; b.out        # 运行java程序生成的二进制文件
+
+	diff a.out b.out                # 判断两个程序的输出是否相同
+	
+	if [ $? -ne 0 ] ;               # 如果不同的话，就break，那么data.in 中的样例就是出问题的
+	then break;
+	else 
+		echo $cnt                   # 如果相同的话，继续下一个对拍循环
+		let cnt=cnt+1         
+		cat data.in
+
+	fi
+done</code></pre></div>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这题前前后后拖了两天，今天总算是把题目和题解整完了：）</p>
+<p>为了解释清楚公式推倒过程，非常详细地叙述了细节，同时提供了大量的参考资料。</p>
+<p>这么写博客真的是很耗费时间啊，以后尽量要注重语言的简练，着重用更少的文字表达出自己的思想。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://nanti.jisuanke.com/t/A1991" target="_blank" rel="noopener">2018沈阳网络赛c题 Convex Hull</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a href="https://wenku.baidu.com/view/542961fdba0d4a7302763ad5.html" target="_blank" rel="noopener">贾志鹏 线性筛法与积性函数</a>
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a href="https://blog.csdn.net/skywalkert/article/details/50500009" target="_blank" rel="noopener">浅谈一类积性函数的前缀和</a>
+<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:4" class="footnote-text"><span><a href="https://blog.csdn.net/qkoqhh/article/details/82532516" target="_blank" rel="noopener">2018沈阳网络赛C(莫比乌斯函数+容斥)</a>
+<a href="#fnref:4" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:5" class="footnote-text"><span><a href="https://www.cnblogs.com/ECJTUACM-873284962/p/9198885.html" target="_blank" rel="noopener">int218的参考资料</a>
+<a href="#fnref:5" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:6" class="footnote-text"><span><a href="https://blog.csdn.net/u010304217/article/details/37728493" target="_blank" rel="noopener">Java中的BigInteger在ACM中的应用</a>
+<a href="#fnref:6" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:7" class="footnote-text"><span><a href="https://www.szdev.com/blog/Hexo/mathjax-config-and-tutorial/" target="_blank" rel="noopener">mathjax配置及语法 </a>
+<a href="#fnref:7" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/ACM/">ACM</a>
+                    
+                      <a class="hover-with-bg" href="/categories/ACM/2018%E7%BD%91%E7%BB%9C%E8%B5%9B%E8%A1%A5%E9%A2%98/">2018网络赛补题</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/ACM/">ACM</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%87%BD%E6%95%B0/">莫比乌斯函数</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AE%B9%E6%96%A5/">容斥</a>
+                    
+                      <a class="hover-with-bg" href="/tags/int128/">int128</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AF%B9%E6%8B%8D/">对拍</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/06/13/cfEdu89-a-e/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">cfEdu89的A题-E题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/06/11/%E4%BD%BF%E7%94%A8%E8%A5%BF%E7%94%B5%E5%AE%BF%E8%88%8D%E7%9A%84%E7%BD%91%E7%BA%BF%E8%BF%9E%E6%8E%A5%E7%94%B5%E8%84%91%E4%BD%BF%E7%94%A8%E6%A0%A1%E5%9B%AD%E7%BD%91/">
+                        <span class="hidden-mobile">使用西电宿舍的网线连接电脑使用校园网</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    function loadGitalk() {
+      addScript('https://cdn.staticfile.org/blueimp-md5/2.13.0/js/md5.min.js');
+      addScript('https://cdn.staticfile.org/gitalk/1.6.2/gitalk.min.js', function () {
+        var gitalk = new Gitalk({
+          clientID: 'd0894ccce145771ca5ca',
+          clientSecret: '7437ee15d5f2292ece2352b361ac55b6f57c5e51',
+          repo: 'fromddy.github.io',
+          owner: 'fromddy',
+          admin: ["fromddy"],
+          id: md5(location.pathname),
+          language: 'zh-CN',
+          labels: ["Gitalk"],
+          perPage: 10,
+          pagerDirection: 'last',
+          createIssueManually: true,
+          distractionFreeMode: false
+        });
+        gitalk.render('gitalk-container');
+      });
+    }
+    waitElementVisible('gitalk-container', loadGitalk);
+  </script>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "2018沈阳网络赛c题（莫比乌斯函数+容斥）&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

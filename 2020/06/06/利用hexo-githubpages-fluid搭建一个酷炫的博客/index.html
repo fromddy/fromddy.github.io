@@ -1,0 +1,624 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/b.png">
+  <link rel="icon" type="image/png" href="/img/avatar.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="ddy">
+  <meta name="keywords" content="icpc 辩论">
+  <title>利用Hexo+GitHub Pages+fluid搭建一个酷炫的博客 - mainland</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>mainland</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-06-06 00:18" pubdate>
+      2020年6月6日 凌晨
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">利用Hexo+GitHub Pages+fluid搭建一个酷炫的博客</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>博客可以展示一个准程序员的品味。</p>
+<p>之前看到很多同学搭建了好看的博客感觉非常的馋。</p>
+<a id="more"></a>
+<p>可惜之前因为各种没时间<del>偷懒</del>，所以是利用hexo+github pages+非常简单的博客模版的方案。</p>
+<p>即便如此，也是三分钟热度，没有养成及时更新博客的好习惯。</p>
+<p>之前的博客上面更多的是一些不成体系的acm题目以及心情日记。</p>
+<p>所以要从现在开始养成良好的习惯啊！兄弟们你们说对吗？！</p>
+<p>这篇文章就带领大家从头开始整一个炫酷的博客：）</p>
+<h2 id="前期规划"><a href="#前期规划" class="headerlink" title="前期规划"></a>前期规划</h2><h4 id="设备"><a href="#设备" class="headerlink" title="设备"></a>设备</h4><p>我是在manjaro系统上搞的。</p>
+<p>不过其实在windows系统还是在linux系统感觉搞这些都是大同小异啦。</p>
+<h2 id="具体搭建"><a href="#具体搭建" class="headerlink" title="具体搭建"></a>具体搭建</h2><p>首先基础的步骤按照   <a href="https://www.jianshu.com/p/860d3e0fff58" target="_blank" rel="noopener">Hexo+GithubPages 非常简单易行的搭建个人博客</a><sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="Hexo+GithubPages 非常简单易行的搭建个人博客
+">[1]</span></a></sup> 来走。</p>
+<p>如果按照一般情况 直接走完这个博客的流程 就可以 搞好一个基础的博客了:）</p>
+<p><del>旁白：那我还写这个博客干什么？</del></p>
+<p>我（苦笑）：因为我们总会遇到各种坑啊！！！</p>
+<p>上述的博客内容当中，需要参考的主要是 <strong>搭建个人博客的步骤</strong>中的如下部分：</p>
+<ul>
+<li>GitHhub创建个人仓库</li>
+<li>安装Git</li>
+<li>将本地git与GitHUb账号绑定</li>
+<li>安装node.js</li>
+<li>安装hexo</li>
+<li>把博客的更新部署到GitHub上</li>
+<li>更换主题</li>
+</ul>
+<p>在这里将本地git与Github账号绑定，基本上使用都是在GitHub网站上添加ssh生成的密钥的公钥的方式。</p>
+<p>之后把博客的更新部署到GitHub上利用的<code>hexo d</code>命令背后同样也利用了ssh连接。</p>
+<p>但是由于众所周知的原因，现在GitHub网站慢的一批，这里就需要proxychains的使用了，配置好之后，只需要在相关命令前输入<code>proxychains</code>就好。</p>
+<p>很可惜，即便如此，<code>ssh -T git@github.com</code>还是走不通，所以我把配置文件改为了https的形式，</p>
+<p>具体参考了这一篇博客 <a href="https://blog.csdn.net/qq_40612211/article/details/104278941" target="_blank" rel="noopener">Hexo通过https方式免密部署到github</a> <sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="Hexo通过https方式免密部署到github
+">[2]</span></a></sup> 。</p>
+<p>这样我们在浏览器中输入<code>username.github.io</code>，这里的<code>username</code>就是GitHub的用户名，注意更换。</p>
+<p>就可以看到一个博客的基本的状态，非常的朴素。</p>
+<p>所以需要进行主题的更换。</p>
+<p>我选择的是fluid这一款主题，具体的GitHub地址在这里： <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="noopener">hexo-theme-fluid</a><sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="hexo-theme-fluid
+">[3]</span></a></sup>。</p>
+<p>fluid主题不仅绚丽好看，交互设计也设计得很好，同时也提供了详细的文档： <a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="noopener">Fluid的配置指南</a><sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="Fluid的配置指南
+">[4]</span></a></sup>。</p>
+<p>大家可以在具体的文档当中寻找答案，在themes中的配置文件<code>_config.yml</code>中也有非常详细的注释<del>尽管如此修改配置的过程并不轻松</del>。</p>
+<p>对于博客的主题和内容我主要完成了如下几个方面的修改。</p>
+<ul>
+<li>[x] 修改了博客的各种背景图片。</li>
+<li>[x] 添加了一些小伙伴的友情连接。</li>
+<li>[x] 添加了自我介绍（about）的页面。</li>
+</ul>
+<p>下面是代做事项：</p>
+<ul>
+<li>[ ] 把之前的文章整理到新的博客上来。</li>
+<li>[ ] 添加评论功能。</li>
+</ul>
+<p>之后如果想把<code>username.github.io</code>和你所购买的域名绑定的话，可以参考如下的两篇文章：</p>
+<p><a href="https://www.cnblogs.com/yinxiang/p/9237488.html" target="_blank" rel="noopener">利用GitHub搭建Hexo博客并开启HTTPS</a><sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span class="hint--top hint--rounded" aria-label="利用GitHub搭建Hexo博客并开启HTTPS
+">[5]</span></a></sup>,</p>
+<p><a href="https://cloud.tencent.com/developer/article/1421879" target="_blank" rel="noopener">GitHub Pages 搭建的博客绑定域名</a><sup id="fnref:6" class="footnote-ref"><a href="#fn:6" rel="footnote"><span class="hint--top hint--rounded" aria-label="GitHub Pages 搭建的博客绑定域名 
+">[6]</span></a></sup>。</p>
+<p>还有一些关于markdown格式的资料，可以参考如下的这篇文章:<br><a href="https://www.jianshu.com/p/ebe52d2d468f" target="_blank" rel="noopener">Markdown语法大全(超级版)</a><sup id="fnref:7" class="footnote-ref"><a href="#fn:7" rel="footnote"><span class="hint--top hint--rounded" aria-label="Markdown语法大全(超级版)
+">[7]</span></a></sup>。</p>
+<p>以及这是fluid作者开发的markdown在线编辑器，当中有markdown基本语法的展示，所见即所得：<br><a href="https://prod.zkqiang.cn/wxeditor/index.html" target="_blank" rel="noopener">markdown 在线编辑</a><sup id="fnref:8" class="footnote-ref"><a href="#fn:8" rel="footnote"><span class="hint--top hint--rounded" aria-label="markdown 在线编辑
+">[8]</span></a></sup>。</p>
+<p>到此为止，博客的基本配置就搞完了，虽然说起来并不复杂，但是查阅文档和修改各种配置还是非常费事的，</p>
+<p>特别是修改博客的各种图片，反反复复调试效果，<del>和女同学化妆有异曲同工之妙，</del>博客的搭建和各种配置的调整大约花费了一天的时间。</p>
+<h2 id="关于博客的计划"><a href="#关于博客的计划" class="headerlink" title="关于博客的计划"></a>关于博客的计划</h2><p>当然啦，如果只是搭建博客，其实并没有什么难度。</p>
+<p>困难的地方在于，可以一直保持一个分享的心态，可以常常把自己的所思所想更新在博客上，这对于我的日常生活也起到了一个积累的作用。</p>
+<p>当然啦，写博客最大的一个问题还在于很多时候都是自己一个人写，得到的周围人的反馈很少，所以我会常常把一些文章同时在<code>知乎</code>等平台上发表出来，或者可以转化成视频的形式在B站上发布出来，这样可以起到<code>引流</code>的效果。</p>
+<p>博客也并不希望非常严肃，总之还是希望保持一些年轻人的朝气的，装逼味不应该太重，哈哈哈哈。</p>
+<p>这篇博客就到这里啦，希望大家可以看到这里有一些收获。</p>
+<p>如果按照这篇博客的流程搭建博客依然遇到了问题的话，可以联系我，我如果有时间的话会在能力范围之内提供尽可能的帮助。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://www.jianshu.com/p/860d3e0fff58" target="_blank" rel="noopener">Hexo+GithubPages 非常简单易行的搭建个人博客</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a href="https://blog.csdn.net/qq_40612211/article/details/104278941" target="_blank" rel="noopener">Hexo通过https方式免密部署到github</a>
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="noopener">hexo-theme-fluid</a>
+<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:4" class="footnote-text"><span><a href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="noopener">Fluid的配置指南</a>
+<a href="#fnref:4" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:5" class="footnote-text"><span><a href="https://www.cnblogs.com/yinxiang/p/9237488.html" target="_blank" rel="noopener">利用GitHub搭建Hexo博客并开启HTTPS</a>
+<a href="#fnref:5" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:6" class="footnote-text"><span><a href="https://cloud.tencent.com/developer/article/1421879" target="_blank" rel="noopener">GitHub Pages 搭建的博客绑定域名</a>
+<a href="#fnref:6" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:7" class="footnote-text"><span><a href="https://www.jianshu.com/p/ebe52d2d468f" target="_blank" rel="noopener">Markdown语法大全(超级版)</a>
+<a href="#fnref:7" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:8" class="footnote-text"><span><a href="https://prod.zkqiang.cn/wxeditor/index.html" target="_blank" rel="noopener">markdown 在线编辑</a>
+<a href="#fnref:8" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/hexo/">hexo</a>
+                    
+                      <a class="hover-with-bg" href="/tags/github-pages/">github pages</a>
+                    
+                      <a class="hover-with-bg" href="/tags/fluid/">fluid</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/06/11/%E4%BD%BF%E7%94%A8%E8%A5%BF%E7%94%B5%E5%AE%BF%E8%88%8D%E7%9A%84%E7%BD%91%E7%BA%BF%E8%BF%9E%E6%8E%A5%E7%94%B5%E8%84%91%E4%BD%BF%E7%94%A8%E6%A0%A1%E5%9B%AD%E7%BD%91/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">使用西电宿舍的网线连接电脑使用校园网</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/09/20/%E8%99%9A%E5%A6%84%E7%9A%84%E7%90%86%E6%83%B3%E4%B8%BB%E4%B9%89%E8%80%85%E7%9A%84%E5%B9%B8%E8%BF%90/">
+                        <span class="hidden-mobile">虚妄的理想主义者的幸运</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    function loadGitalk() {
+      addScript('https://cdn.staticfile.org/blueimp-md5/2.13.0/js/md5.min.js');
+      addScript('https://cdn.staticfile.org/gitalk/1.6.2/gitalk.min.js', function () {
+        var gitalk = new Gitalk({
+          clientID: 'd0894ccce145771ca5ca',
+          clientSecret: '7437ee15d5f2292ece2352b361ac55b6f57c5e51',
+          repo: 'fromddy.github.io',
+          owner: 'fromddy',
+          admin: ["fromddy"],
+          id: md5(location.pathname),
+          language: 'zh-CN',
+          labels: ["Gitalk"],
+          perPage: 10,
+          pagerDirection: 'last',
+          createIssueManually: true,
+          distractionFreeMode: false
+        });
+        gitalk.render('gitalk-container');
+      });
+    }
+    waitElementVisible('gitalk-container', loadGitalk);
+  </script>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "利用Hexo+GitHub Pages+fluid搭建一个酷炫的博客&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
